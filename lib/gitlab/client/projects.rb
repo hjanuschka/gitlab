@@ -50,6 +50,21 @@ class Gitlab::Client
       get("/projects/#{url_encode id}")
     end
 
+    # Play a Job
+    #
+    # @example
+    #   Gitlab.play_job(3, 10)
+    #   Gitlab.play_job('gitlab', 10)
+    #
+    # @param  [Integer, String] id The ID or name of a project.
+    # @param  [Integer] Job Id
+    # @return [Gitlab::ObjectifiedHash]
+    def project_job_play(id, job_id)
+      post("/projects/#{url_encode id}/jobs/#{job_id}/play", body: nil)
+    end
+
+
+
     # Gets a list of project events.
     #
     # @example
