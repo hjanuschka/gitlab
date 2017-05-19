@@ -29,6 +29,21 @@ class Gitlab::Client
       get("/projects/#{url_encode project}/pipelines/#{id}")
     end
 
+    # Gets a single pipeline.
+    #
+    # @example
+    #   Gitlab.pipeline(5, 36)
+    #
+    # @param  [Integer, String] project The ID or name of a project.
+    # @param  [Integer] id The ID of a pipeline.
+    # @return [Gitlab::ObjectifiedHash]
+    def pipeline_jobs(project, id)
+      get("/projects/#{url_encode project}/pipelines/#{id}/jobs")
+    end
+
+
+
+
     # Create a pipeline.
     #
     # @example
